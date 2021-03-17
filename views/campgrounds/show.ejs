@@ -1,0 +1,127 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+    <h1 class="mb-3">
+        <%= campground.name %>
+    </h1>
+
+    <div class="row">
+        <div class="col-md-3 order-md-2 mb-4">
+            <% if (currentUser && campground.author._id.equals(currentUser._id)) { %>
+            <div class="mb-2">
+                <a class="btn btn-info" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+                <form class="d-inline" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                    <button id="deleteCampground" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+            <% } %>
+
+            <div class="list-group">
+                <li class="list-group-item">
+                    <span class="d-block">Price</span>
+                    <span class="font-weight-bold">$<%= campground.price.toFixed(2) %>/night</span>
+                </li>
+                <li class="list-group-item">
+                    <span class="d-block">Creator</span>
+                    <span class="font-weight-bold">
+                        <a href="/users/<%= campground.author._id %>">
+                            <%= campground.author.firstName + " " + campground.author.lastName %>
+                        </a>
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span class="d-block">Created Date</span>
+                    <span class="font-weight-bold"><%= campground.createdDate.toLocaleDateString("en-us") %></span>
+                </li>
+                <li class="list-group-item">
+                    <span class="d-block">Country</span>
+                    <span class="font-weight-bold"><%= campground.country %></span>
+                </li>
+                <li class="list-group-item">
+                    <span class="d-block">City</span>
+                    <span class="font-weight-bold"><%= campground.city %></span>
+                </li>
+                <li class="list-group-item">
+                    <span class="d-block">Phone</span>
+                    <span class="font-weight-bold"><%= campground.contactPhone %></span>
+                </li>
+                <li class="list-group-item">
+                    <span class="d-block">Email</span>
+                    <span class="font-weight-bold"><%= campground.contactEmail %></span>
+                </li>
+            </div>
+        </div>
+
+        <div class="col-md-9 order-md-1">
+            <div class="camp-card">
+                <div class="card pb-3">
+                    <img class="card-img" src="<%= campground.image %>" alt="camground image">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <%= campground.description %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-body bg-light my-4 comments-container">
+                <% campground.comments.forEach(comment => { %>
+                <div id="<%= comment._id %>" class="photo-comment-container border rounded p-2 mb-3 d-flex flex-row">
+                    <!-- author photo -->
+                    <div class="mr-2">
+                        <img src="<%= comment.author.photo %>" alt="user photo" width="40" class="rounded-circle">
+                    </div>
+
+                    <div class="comment-container w-100 ">
+                        <div class="comment-header d-flex">
+                            <!-- comment author -->
+                            <div class="font-weight-bold flex-grow-1">
+                                <a href="/users/<%= comment.author._id %>">
+                                    <%= comment.author.firstName + " " + comment.author.lastName %>
+                                </a>
+                            </div>
+
+                            <!-- comment buttons -->
+                            <% if (currentUser && comment.author.equals(currentUser._id)) { %>
+                            <div class="comment-buttons text-right">
+                                <button class="btn-edit-comment d-inline-block"
+                                    data-campground-id="<%= campground._id %>" data-comment-id="<%= comment._id %>"> <i
+                                        class="fas fa-edit"></i> </button>
+                                <form class="d-inline-block"
+                                    action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE"
+                                    method="post">
+                                    <button class="btn-delete">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <% } %>
+                            <div class="clear-fix"></div>
+                        </div>
+
+                        <!-- comment text -->
+                        <div class="comment-body my-1">
+                            <div class="comment-text"><%= comment.text %>
+                            </div>
+                        </div>
+
+                        <!-- comment date -->
+                        <div class="text-right">
+                            <small class=""><%= moment(comment.createdDate).fromNow() %> </small>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+
+                <form id="comment" action="/campgrounds/<%= campground._id %>/comments" method="post">
+                    <input class="form-control" type="text" name="comment[text]" placeholder="Add a new comment...">
+                    <div class="float-right">
+                        <input class="btn btn-success mt-2" type="submit" value="Comment">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../partials/footer") %>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WigWam!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <!-- country-region -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="gettext" type="application/x-po" href="/languages/en/LC_MESSAGES/en.po">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-5">
+        <a href="/" class="navbar-brand">WigWam!</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/campgrounds">Campgrounds</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/users">Campers</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <% if (currentUser) { %>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/users/<%= currentUser._id %>"><%= currentUser.firstName %></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/logout">Logout</a>
+                </li>
+                <% } else { %>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/register">Sign Up</a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+    <main id="main-container">
+        <div class="container">
+            <% if (error && error.length > 0) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+            <% } %>
+            <% if (success && success.length > 0) { %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+            <% } %>
+        </div>

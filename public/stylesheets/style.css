@@ -1,0 +1,112 @@
+/*********************************************************** 
+    GLOBAL
+***********************************************************/
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.clear-fix {
+    clear: both;
+}
+
+#main-container {
+    min-height: -webkit-calc(100% - 168px);
+    min-height: -moz-calc(100% - 168px);
+    min-height: calc(100vh - 168px);
+}
+
+.form-container {
+    margin: auto;
+}
+
+@media (min-width: 470px) {
+    .form-container {
+        width: 450px;
+    }
+}
+
+.btn-delete {
+    border: none;
+    padding: 0;
+    background: none;
+    color: #dc3545;
+}
+
+.btn-delete:hover {
+    color: #c82333;
+}
+
+.btn-edit-comment {
+    border: none;
+    padding: 0;
+    background: none;
+    color: #17a2b8;
+}
+
+.btn-edit-comment:hover {
+    color: #117a8b;
+}
+
+.comment-buttons {
+    min-width: 37px;
+}
+
+/*********************************************************** 
+    USERS/SHOW
+***********************************************************/
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .header-name {
+        font-size: 1.25rem;
+    }
+}
+
+.user-btn-edit {
+    color: #17a2b8;
+}
+.user-btn-edit:hover {
+    color: #138496;
+}
+
+@media (min-width: 768px) {
+    .border-bottom-md-0 {
+        border-bottom: 0px !important;
+    }
+    .border-right-md {
+        border-right: 1px solid #dee2e6 !important;
+    }
+}
+
+.card-row .card-img {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+@media (min-width: 768px) {
+    .card-row img {
+        max-width: 200px;
+    }
+
+    .card-row .card-img {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .card-row img {
+        max-width: 250px;
+    }
+}
+
+
