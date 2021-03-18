@@ -31,3 +31,8 @@ suited best for them on the basis of the given ratings and review.
   * MongoDB
   * Mongoose
   * Passport.js
+
+Steps to Install:-
+1. Clone the repository.
+2. Install node modules by running "npm i" in the project directory.
+3. Run "node app.js" in cmd.
