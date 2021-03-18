@@ -1,7 +1,10 @@
-# YelpCamp
-Node.js Web application for sharing campgrounds. 
-It is the final project of [The Web Developer Bootcamp](https://www.udemy.com/course/the-web-developer-bootcamp) course with many additions and improvements.<br><br>
-Application Demo: [aligh-yelpcamp.herokuapp.com](https://aligh-yelpcamp.herokuapp.com)
+# Wig-Wam
+WigWam is Node.js web application project.It is a campground app, where 
+users can create their own campgrounds, view and review on other 
+campgrounds. This application is for a fictional startup that allows you to add 
+campgrounds for other users.It allows user’s to choose the campground which is 
+suited best for them on the basis of the given ratings and review.
+
 
 ## Features
   * Responsive Web Design
@@ -20,18 +23,11 @@ Application Demo: [aligh-yelpcamp.herokuapp.com](https://aligh-yelpcamp.herokuap
   * CSS
   * Bootstrap
   * jQuery
-  * [EJS](https://ejs.co/)
-  * [Country-Region DropDown Menu](https://github.com/geodatasource/country-region-dropdown-menu)
+  * EJS
+  
   
 * Back-End
   * Express.js
   * MongoDB
-  * [Mongoose](https://mongoosejs.com/)
-  * [Passport.js](http://www.passportjs.org/)
-  * [connect-flash](https://github.com/jaredhanson/connect-flash)
-  * [method-override](https://www.npmjs.com/package/method-override)
-  * [Moment.js](https://momentjs.com/)
-
-
-## License
-#### [MIT](./LICENSE)
+  * Mongoose
+  * Passport.js
